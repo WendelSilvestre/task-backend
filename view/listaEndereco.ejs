@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Lista</title>
+  </head>
+  <body>
+    <h1>Endereço</h1>
+    
+    
+    <table class="table" table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th style="width: 20%;">Logradouro</th>
+          <th style="width: 20%;">Número do endereço</th>
+          <th style="width: 20%;">Cidade</th>
+          <th style="width: 20%;">Estado</th>
+          <th style="width: 20%;">Código Postal</th>
+          <th style="width: 20%;">Bairro</th>
+          <th style="width: 20%;">Complemento</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% for(item of lista){ %>
+        <tr>
+          <td><%= item.logradouro %></td>
+          <td><%= item.numero %></td>
+          <td><%= item.cidade %></td>
+          <td><%= item.uf %></td>
+          <td><%= item.cep %></td>
+          <td><%= item.bairro %></td>
+          <td><%= item.complemento %></td>
+      <% } %>
+     </tbody>
+    </table>
+    <a href="/">Voltar</a>
+
+ </body>
+</html>
