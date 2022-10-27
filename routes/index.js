@@ -1,18 +1,38 @@
-var express = require('express');
-var db = require('../db.js'); 
-var router = express.Router();
+const express = require('express');
+const { append } = require('express/lib/response');
+const db = require('../db.js'); 
+const router = express.Router();
 
-router.get('/', function(req, res) {
-  res.sender('../view/index');
+
+app = express()
+app.use(router)
+app.listen(8000, function(){
+
+  console.log("ouvindo");
+})
+app.set("view engine", "ejs");
+app.set("views", "./view");
+
+app.get('/', function(req, res) {
+  res.render('index');
 });
 
 
-router.get('/listar', function(req, res) {
+router.get('/usuarios', function(req, res) {
   db.query('SELECT * FROM usuarios ORDER BY nome', [],function(erro, resultado){
   if(erro){
     res.status(200).send(erro)
   }
-  res.sender('../view/lista', {lista: resultado})
+  res.sender('lista', {lista: resultado})
+  });
+});
+
+router.get('/listar/endereco', function(req, res) {
+  db.query('SELECT * FROM endereco_usuario WHERE id_usuario= ', [],function(erro, resultado){
+  if(erro){
+    res.status(200).send(erro)
+  }
+  res.sender('listaEndereco', {lista: resultado})
   });
 });
 
@@ -26,6 +46,6 @@ router.post('/add', function(req, res) {
     if(erro){
       res.status(200).send('Erro: ' + error)
     }
-    res.redirect('/listar')
+    res.redirect('/listar');
   });
 });
