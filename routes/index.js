@@ -1,19 +1,10 @@
 const express = require('express');
 const { append } = require('express/lib/response');
 const db = require('../db.js'); 
-const router = express.Router();
+const route = express.Router();
 
 
-app = express()
-app.use(router)
-app.listen(8000, function(){
-
-  console.log("ouvindo");
-})
-app.set("view engine", "ejs");
-app.set("views", "./view");
-
-app.get('/', function(req, res) {
+route.get('/', function(req, res) {
   res.render('index');
 });
 
